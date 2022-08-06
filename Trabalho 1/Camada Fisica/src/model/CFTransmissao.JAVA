@@ -6,15 +6,16 @@ public class CFTransmissao{
   private String num = "";
   private TextArea bin;
 
+
   
 
-  public static void AplicacaoTransmissora (String mensagem, int choice) {
+  public void AplicacaoTransmissora (String mensagem, int choice) {
 
 
     CamadaDeAplicacaoTransmissora(mensagem);
   }
 
-  public static void CamadaFisicaTransmissora (int quadro[], int choice) {
+  public void CamadaFisicaTransmissora (int quadro[], int choice) {
     int tipoDeCodificacao = choice; //alterar de acordo o teste
     int fluxoBrutoDeBits []; //ATENÇÃO: trabalhar com BITS!!!
     switch (tipoDeCodificacao) {
@@ -31,21 +32,48 @@ public class CFTransmissao{
     MeioDeComunicacao(fluxoBrutoDeBits);
     }//fim do metodo CamadaFisicaTransmissora
 
-  public static void CamadaDeAplicacaoTransmissora (string mensagem) {
+  public void CamadaDeAplicacaoTransmissora (string mensagem) {
     int quadro [] = mensagem //trabalhar com bits!!!
     //chama a proxima camada
     CamadaFisicaTransmissora(quadro);
   }//fim do metodo CamadaDeAplicacaoTransmissora
 
-  public static int[] CamadaFisicaTransmissoraCodificacaoBinaria (int quadro []) {
+  public int[] CamadaFisicaTransmissoraCodificacaoBinaria (int quadro []) {
     //implementacao do algoritmo
   }//fim do metodo CamadaFisicaTransmissoraCodificacaoBinaria
 
-  public static int[] CamadaFisicaTransmissoraCodificacaoManchester (int quadro []) {
+  public int[] CamadaFisicaTransmissoraCodificacaoManchester (int quadro []) {
     //implementacao do algoritmo
   }//fim do metodo CamadaFisicaTransmissoraCodificacaoManchester
 
-  public static int[] CamadaFisicaTransmissoraCodificacaoManchesterDiferencial(int quadro []){
+  public int[] CamadaFisicaTransmissoraCodificacaoManchesterDiferencial(int quadro []){
     //implementacao do algoritmo
   }//fim do CamadaFisicaTransmissoraCodificacaoManchesterDiferencial
+
+
+  public int[] getAscii(String mensagemTA){
+    char[] mensag = mensagemTA.toCharArray();//Converte a string para um array de caracteres
+    int [] ascii = "";
+    for(int i = 0; i < mensag.lenght;i++)
+      ascii[i] = (int) mensag[i];
+    
+   return ascii;
+  }
+
+
+  public static int[] toBinary(String text) {
+    char[] charText = text.toCharArray();
+    int[] intText = new int[(int) Math.ceil(((double) charText.length) / 4)];
+    for (int i = 0; i < intText.length; i++) {
+      for (int j = 0; j < 4; j++) {
+        if (charText.length <= 4 * i + j)
+          return intText;
+        if (j != 0)
+          intText[i] <<= 7;
+        intText[i] |= (int) charText[4 * i + j];
+      } // for loop ends here
+    } // for loop ends here
+    return intText;
+  } // toBinary method ends here
+
 }
