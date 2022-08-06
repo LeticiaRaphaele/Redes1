@@ -1,0 +1,4 @@
+Cada inteiro pode armazenar 32 bits e na tabela ascii cada letra é dada 
+em 8 bits.
+Assim um inteiro teoricamento pode armazenar 4 letras. Entretanto o 32 bit  representa o sinal do inteiro
+isso causa que so podemos usar letras que possuam até 7 bits.   
